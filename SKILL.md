@@ -1,9 +1,9 @@
 ---
-name: event plan
-description: 根据会议通知和会议录音转写，生成主题党日活动方案和主题党日记录表两个 DOCX 文件。
+name: themed-party-day
+description: 根据会议通知、会议录音转写文本和其他一些补充材料，生成主题党日活动方案和主题党日记录表两个 DOCX 文件。
 ---
 
-# event plan
+# themed-party-day
 
 当用户提供会议通知、会议录音转写文本，并要求生成主题党日相关正式文档时，使用本技能。
 
