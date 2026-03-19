@@ -1,13 +1,16 @@
-$template = 'D:\skills\活动方案\主题党日活动方案.docx'
+$scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
+$skillRoot = Split-Path -Parent $scriptRoot
+$template = Join-Path $skillRoot 'assets\主题党日活动方案模板.docx'
 $outDir = $env:OUTPUT_DIR
 if (-not $outDir) { $outDir = 'E:\05-党员活动\2026年支部活动' }
 $yearMonth = $env:YEAR_MONTH
 if (-not $yearMonth) { throw 'YEAR_MONTH env var required, e.g. 2026年1月' }
 $outDocx = Join-Path $outDir ('智能制造管控党支部-主题党日记录表（' + $yearMonth + '）.docx')
-$work = 'd:\cursor project\_tmp_docx_build'
+$work = Join-Path $env:TEMP 'themed-party-day_build_docx'
 
 if (Test-Path $work) { Remove-Item -Recurse -Force $work }
 New-Item -ItemType Directory -Path $work | Out-Null
+New-Item -ItemType Directory -Path $outDir -Force | Out-Null
 Copy-Item $template "$work\template.zip" -Force
 Expand-Archive -Path "$work\template.zip" -DestinationPath "$work\unzipped" -Force
 
